@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production'){
+  require('dotenv').config();
+}
+
 var express = require('express');
 var app = express();
 var expressLayouts = require('express-ejs-layouts');
@@ -11,7 +15,7 @@ app.use(express.static('public'));
 
 var mongoose = require('mongoose');
 //mongoose.connect(process.env.DATABASE_URL, {userNewUrlParser : true });
-mongoose.connect('mongodb://localhost/library', { useNewUrlParser: true,useUnifiedTopology:
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true,useUnifiedTopology:
  true });
 
 var db = mongoose.connection;
